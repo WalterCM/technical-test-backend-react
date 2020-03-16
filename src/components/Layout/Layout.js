@@ -5,7 +5,6 @@ import style from './Layout.module.css';
 
 const layour = (props) => (
   <Aux>
-    <div>Toolbar, SideDrawer, Backdrop</div>
     <main className={style.Content}>
       {props.children}
     </main>
