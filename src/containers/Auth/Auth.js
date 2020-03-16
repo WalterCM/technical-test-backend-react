@@ -4,6 +4,7 @@ import Button from '../../components/UI/Button/Button';
 import style from './Auth.module.css';
 
 import axios from '../../axios-connection';
+import Header from "../../components/UI/Header/Header";
 
 class Auth extends Component {
   state = {
@@ -24,12 +25,17 @@ class Auth extends Component {
         const token = response.data.token;
 
         localStorage.setItem('token', token);
+        this.props.history.push('/notes/');
       });
   };
 
   render() {
+    if (localStorage.getItem('token') == null) {
+      this.props.history.push('/notes/');
+    }
     return (
       <div>
+        <Header>Logueate</Header>
         <form className={style.AuthForm}>
           <ul>
             <li>

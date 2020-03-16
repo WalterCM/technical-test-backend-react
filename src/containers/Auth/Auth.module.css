@@ -2,7 +2,9 @@
     width: 400px;
     margin: 20px auto;
     text-align: center;
-    display: inline-block;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 .AuthForm ul {

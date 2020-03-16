@@ -6,6 +6,7 @@ import NoteManager from './NoteManager/NoteManager';
 
 import Modal from '../../components/UI/Modal/Modal';
 import Button from '../../components/UI/Button/Button';
+import Header from  '../../components/UI/Header/Header';
 
 import style from './Notes.module.css';
 
@@ -89,6 +90,8 @@ class Notes extends Component {
 
     return (
       <Aux>
+        <Header>Notas</Header>
+
         <Modal show={this.state.onManage}>
           <NoteManager
             selectedNote={this.state.selectedNote}
