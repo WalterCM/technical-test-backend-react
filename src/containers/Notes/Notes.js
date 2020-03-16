@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Aux from '../../hoc/Aux';
 import Note from '../../components/Note/Note';
-import NoteManager from '../NoteManager/NoteManager';
+import NoteManager from './NoteManager/NoteManager';
 
 import Modal from '../../components/UI/Modal/Modal';
 import Button from '../../components/UI/Button/Button';
