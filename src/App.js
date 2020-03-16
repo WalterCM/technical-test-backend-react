@@ -12,6 +12,10 @@ function App() {
         <Switch>
           <Route path="/" exact component={Auth}/>
           <Route path="/notes/" component={Notes}/>
+          <Route path="/logout/" render={() => {
+            localStorage.setItem('token', null);
+            return <Auth />
+          }} />
         </Switch>
       </Layout>
     </div>

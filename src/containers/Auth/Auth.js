@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
+
 import Button from '../../components/UI/Button/Button';
 
 import style from './Auth.module.css';
@@ -11,6 +13,12 @@ class Auth extends Component {
     username: null,
     password: null,
     loginIn: true
+  };
+
+  componentDidMount = () => {
+    if (this.props.match.url === '/logout/') {
+      this.props.history.push('/');
+    }
   };
 
   onInputChangeHandler = (event) => {
@@ -87,4 +95,4 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+export default withRouter(Auth);

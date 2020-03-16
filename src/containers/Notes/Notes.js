@@ -30,6 +30,12 @@ class Notes extends Component {
 
 
   componentDidMount = () => {
+    const token = localStorage.getItem('token');
+
+    if (token == null || token === 'null') {
+      this.props.history.push('/');
+      return;
+    }
     this.updateNoteList();
   };
 
