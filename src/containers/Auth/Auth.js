@@ -9,7 +9,8 @@ import Header from "../../components/UI/Header/Header";
 class Auth extends Component {
   state = {
     username: null,
-    password: null
+    password: null,
+    loginIn: true
   };
 
   onInputChangeHandler = (event) => {
@@ -18,10 +19,18 @@ class Auth extends Component {
     });
   };
 
-  onLoginHandler = (event) => {
+  onMainHandler = (event) => {
     event.preventDefault();
-    axios.post('users/token/', this.state)
+    let url = 'users/token/';
+    if (!this.state.loginIn) {
+      url = 'users/create/'
+    }
+    axios.post(url, this.state)
       .then(response => {
+        if (!this.state.loginIn) {
+          this.setState({loginIn: true})
+          return;
+        }
         const token = response.data.token;
 
         localStorage.setItem('token', token);
@@ -29,13 +38,28 @@ class Auth extends Component {
       });
   };
 
+  onSwitchAuth = (event) => {
+    event.preventDefault();
+    this.setState((prevState) => ({
+      loginIn: !prevState.loginIn
+    }))
+  };
+
   render() {
     if (localStorage.getItem('token') == null) {
       this.props.history.push('/notes/');
     }
-    return (
+
+    let title = 'Logueate';
+    let otherAuth = 'Registro';
+    if (!this.state.loginIn) {
+      title = 'Registrate';
+      otherAuth = 'Logueo';
+    }
+
+  return (
       <div>
-        <Header>Logueate</Header>
+        <Header>{title}</Header>
         <form className={style.AuthForm}>
           <ul>
             <li>
@@ -54,7 +78,8 @@ class Auth extends Component {
                 name="password"
                 onChange={this.onInputChangeHandler} />
             </li>
-            <Button type="Success" onClick={this.onLoginHandler}>Loguearse</Button>
+            <Button type="Success" onClick={this.onMainHandler}>{title}</Button>
+            <Button type="Danger" onClick={this.onSwitchAuth}>Cambia a {otherAuth}</Button>
           </ul>
         </form>
       </div>
