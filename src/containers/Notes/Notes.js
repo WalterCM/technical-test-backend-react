@@ -53,7 +53,7 @@ class Notes extends Component {
   onAddNoteHandler = () => {
     axios.post('notes/create/', {}, this.getConfig())
       .then(response => {
-        console.log(response)
+        this.updateNoteList()
       });
   };
 
