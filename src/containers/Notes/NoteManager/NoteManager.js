@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Aux from '../../hoc/Aux';
-import Button from '../../components/UI/Button/Button';
+import Aux from '../../../hoc/Aux';
+import Button from '../../../components/UI/Button/Button';
 import style from './NoteManager.module.css';
 
 const noteManager = (props) => {

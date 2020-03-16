@@ -1,0 +1,30 @@
+.AuthForm {
+    width: 400px;
+    margin: 20px auto;
+    text-align: center;
+    display: inline-block;
+}
+
+.AuthForm ul {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.AuthForm label {
+    width: 200px;
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.AuthForm input {
+    width: 350px;
+}
+
+.AuthForm button {
+    margin-top: 15px;
+}

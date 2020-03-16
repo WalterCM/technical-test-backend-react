@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 
 import Aux from '../../hoc/Aux';
 import Note from '../../components/Note/Note';
@@ -10,6 +9,8 @@ import Button from '../../components/UI/Button/Button';
 
 import style from './Notes.module.css';
 
+import axios from '../../axios-connection';
+
 class Notes extends Component {
   state = {
     notes: [],
@@ -19,12 +20,20 @@ class Notes extends Component {
     onManage: false
   };
 
+  getConfig = () => {
+    const token = localStorage.getItem('token');
+    return {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+  };
+
+
   componentDidMount = () => {
     this.updateNoteList();
   };
 
   updateNoteList = () => {
-    axios.get('http://localhost:8000/notes/list/')
+    axios.get('notes/list/', this.getConfig())
       .then(response => {
         console.log(response);
         this.setState({notes: response.data});
@@ -41,7 +50,7 @@ class Notes extends Component {
   };
 
   onAddNoteHandler = () => {
-    axios.post('http://localhost:8000/notes/create/', {})
+    axios.post('notes/create/', {}, this.getConfig())
       .then(response => {
         console.log(response)
       });
@@ -54,7 +63,7 @@ class Notes extends Component {
       'body': body.value
     };
 
-    axios.patch('http://localhost:8000/notes/' + this.state.selectedNote + '/manage/', payload)
+    axios.patch('notes/' + this.state.selectedNote + '/manage/', payload, this.getConfig())
       .then(response => {
         this.updateNoteList();
         this.hideNoteManagerModal();
