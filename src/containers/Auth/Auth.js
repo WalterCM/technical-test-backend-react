@@ -24,7 +24,6 @@ class Auth extends Component {
         const token = response.data.token;
 
         localStorage.setItem('token', token);
-        // axios.defaults.headers.common = {'Authorization': `bearer ${token}`}
       });
   };
 

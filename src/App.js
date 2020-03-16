@@ -1,4 +1,5 @@
 import React from 'react';
+import {Route, Switch} from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
 import Notes from './containers/Notes/Notes';
@@ -8,8 +9,10 @@ function App() {
   return (
     <div>
       <Layout>
-        <Notes />
-        <Auth />
+        <Switch>
+          <Route path="/" exact component={Auth}/>
+          <Route path="/notes/" component={Notes}/>
+        </Switch>
       </Layout>
     </div>
   );

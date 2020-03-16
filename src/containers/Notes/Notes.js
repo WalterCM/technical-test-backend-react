@@ -56,11 +56,10 @@ class Notes extends Component {
       });
   };
 
-  onAcceptHandler = (event, title, body) => {
-    event.preventDefault();
+  onAcceptHandler = (title, body) => {
     const payload = {
-      'title': title.value,
-      'body': body.value
+      'title': title,
+      'body': body
     };
 
     axios.patch('notes/' + this.state.selectedNote + '/manage/', payload, this.getConfig())
@@ -71,8 +70,7 @@ class Notes extends Component {
       });
   };
 
-  onCancelHandler = (event) => {
-    event.preventDefault();
+  onCancelHandler = () => {
     this.hideNoteManagerModal();
   };
 
@@ -97,7 +95,8 @@ class Notes extends Component {
             selectedTitle={this.state.selectedTitle}
             selectedBody={this.state.selectedBody}
             onAccept={this.onAcceptHandler}
-            onCancel={this.onCancelHandler} />
+            onCancel={this.onCancelHandler}
+            config={this.getConfig()}/>
         </Modal>
         <section className={style.Notes}>
           {notes}
