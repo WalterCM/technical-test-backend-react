@@ -1,0 +1,27 @@
+.NoteManager {
+    width: 400px;
+    margin: 20px auto;
+    text-align: center;
+    display: inline-block;
+}
+
+.NoteManager ul {
+    list-style: none;
+}
+
+.NoteManager label {
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+    margin: 10px;
+}
+
+.NoteManager input {
+    width: 350px;
+}
+
+.NoteManager textarea {
+    height: 150px;
+    width: 350px;
+    resize: none;
+}

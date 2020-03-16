@@ -5,3 +5,22 @@
     width: 80%;
     margin: auto;
 }
+
+.AddNoteButton {
+    text-align: center;
+}
+
+.AddNoteButton button {
+    background-color: white;
+    color: black;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    box-shadow: 0 2px 3px black
+}
+
+.AddNoteButton button:hover,
+.AddNoteButton button:active {
+    background-color: #C0DDF5;
+}
